@@ -1,0 +1,8 @@
+<div ng-include="'addCatalog'" ></div>
+<script id="addCatalog" type="text/ng-template">
+	<select class="form-control" ng-options="item.name+' >' for item in catalogs" ng-init="catalog = catalogs[0]" ng-model="catalog" id="select">
+		<option value="">就在这级目录</option>
+	</select>
+	<div ng-if="catalog.data" ng-include="'addCatalog'" ng-init="catalogs = catalog.data"></div>
+
+</script>

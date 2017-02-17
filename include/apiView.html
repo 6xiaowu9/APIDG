@@ -1,0 +1,26 @@
+<script id="apiView" type="text/ng-template">
+	<table class="table table-bordered table-hover">
+		<thead>
+			<tr>
+				<th class="width10">#</th>
+				<th>KEY</th>
+				<th>类型</th>
+				<th>说明</th>
+			</tr>
+		</thead>
+		<tbody ng-repeat="item in formatApi">
+			<tr>
+				<td ng-bind="$index"></td>
+				<td><code ng-bind="item.key"></code></td>
+				<td><span ng-bind="dataType(item.value)"></span></td>
+				<td><span ng-bind="item.apiDescreapt"></span></td>
+			</tr>
+			<tr ng-if="isObject(item.value)">
+				<td><code ng-bind="item.key"></code></td>	
+				<td colspan="3">
+					<div ng-include="'apiView'" ng-init="formatApi = item.value"></div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</script>

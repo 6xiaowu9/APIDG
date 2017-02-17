@@ -1,0 +1,5 @@
+[
+	{"name":"GET"},
+	{"name":"POST"},
+	{"name":"JSONP"}
+]

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">
+	<title>API8192</title>
+	<link href="./public/img/api8192.ico" rel="shortcut icon">
+	<link rel="stylesheet" type="text/css" href="./public/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="./public/css/common.css">
+</head>
+<body ng-app="API8192">
+	<div ng-controller="apiContent" class="content">
+		<!-- 目录等 -->
+		<div class="content-left fl">
+			<div class="nav-title">
+				<span>目录</span>
+				<a class="fr" href="./addCatalog.html" title="添加目录" >+</a>
+			</div>
+			<div  class="nav-catalog" ng-include="'./include/catalog.html'"></div>
+		</div>
+		<!-- API内容 -->
+		<div class="content-right scrollbar fl">
+			<div class="api">
+				<div class="api-title">
+					<div class="fl" ng-bind="apiTitle.title"></div>
+					<a class="fr" href="./addApi.html?name={{apiTitle.name}}" title="添加API" >+</a>
+				</div>
+				<div class="api-content">
+
+				<!-- 一个api文档的Item开始 -->
+
+					<div class="item" ng-repeat="api in apis">
+						<div class="bs-callout bs-callout-danger">
+							<p>名称：<span ng-bind="api.apiName"></span></p>
+							<p>描述：<span ng-bind="api.apiDescreapt"></span></p>
+						</div>
+						<div class="bs-callout bs-callout-warning">
+							<p>请求类型：<span ng-bind="api.httpMethod"></span></p>
+							<p>请求地址：<span ng-bind="api.httpUrl"></span>
+								<a class="fr glyphicon glyphicon-edit" href="./addApi.html?name={{apiTitle.name}}&httpUrl={{api.httpUrl}}" title="修改API" ></a>
+								<a class="fr glyphicon glyphicon-trash" href="#" ng-click="deleteApi(api.httpUrl)" title="删除API" ></a>
+
+							</p>
+							<p>请求参数：</p>
+							<div ng-include="'./include/apiRequest.html'" ></div>
+
+							<p>返回参数：</p>
+							<div ng-include="'./include/apiResponse.html'"></div>
+							
+
+							<p>数据实例：</p>
+							<pre ng-bind="api.responseString"></pre>
+						</div>
+						<hr class="divider">
+					</div>
+				<!-- 一个api文档的Item结束 -->
+
+				</div>
+			</div>
+		</div>
+		<!-- <i class="glyphicon glyphicon-cloud"></i> -->
+	</div>
+
+
+<script type="text/javascript" src="./public/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="./public/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="./public/js/angular.min.js"></script>
+<script type="text/javascript" src="./public/js/formatJson.js"></script>
+<script type="text/javascript" src="./public/js/md5.js"></script>
+<script type="text/javascript" src="./public/js/ng.js"></script>
+<script type="text/javascript" src="./public/js/common.js"></script>
+</body>
+</html>

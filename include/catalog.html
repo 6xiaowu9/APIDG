@@ -1,0 +1,9 @@
+<div ng-include="'catalog'"></div>
+<script id="catalog" type="text/ng-template">
+	<ul>
+		<li ng-repeat="item in catalogs">
+			<a href="?name={{item.name}}" title="{{item.name}}" ng-bind="item.name" ></a>
+			<div ng-if="item.data" ng-include="'catalog'" ng-init="catalogs = item.data" ></div>
+		</li>
+	<ul>
+</script>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=8">
+	<meta http-equiv="Expires" content="0">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-control" content="no-cache">
+	<meta http-equiv="Cache" content="no-cache">
+	<title>API8192</title>
+	<link href="./public/img/api8192.ico" rel="shortcut icon">
+	<link rel="stylesheet" type="text/css" href="./public/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="./public/css/common.css">
+</head>
+<body ng-app="API8192">
+	<div ng-controller="addCatalog" class="content">
+		<!-- 目录等 -->
+		<div class="content-left fl">
+			<div class="nav-title">
+				<span>目录</span>
+				<a class="fr" href="./index.html" title="返回主页" ><</a>
+			</div>
+			<!-- <div  ng-include="'./include/catalog.html'"></div> -->
+			<div class="form-group ">
+				<div class="input-group nav-catalog">
+				    <div class="input-group-addon">目录位置</div>
+				    <div ng-include="'./include/select.html'"></div>
+			    </div>
+			    <div class="input-group nav-catalog">
+			        <div class="input-group-addon">目录名称</div>
+			        <input type="text" class="form-control" ng-model="name" placeholder="目录名称" ng-init="name='目录名称'">
+			    </div>
+			    <div class="input-group nav-catalog">
+			        <div class="input-group-addon">目录标题</div>
+			        <input type="text" class="form-control" ng-model="title" placeholder="目录标题">
+			    </div>
+		        <input type="submit" ng-click="addCatalog()" class="btn fr nav-catalog" >
+		  	</div>
+		</div>
+
+		<!-- API内容 -->
+		<div class="content-right scrollbar fr">
+			<div class="api">
+				<div class="api-title">
+					<div class="fl" ng-bind="title" ng-init="title='这里是很长的一个大标题'"></div>
+				</div>
+				<div class="api-content"></div>
+			</div>
+	</div>
+
+
+<script type="text/javascript" src="./public/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="./public/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="./public/js/angular.min.js"></script>
+<script type="text/javascript" src="./public/js/formatJson.js"></script>
+<script type="text/javascript" src="./public/js/ng.js"></script>
+<script type="text/javascript" src="./public/js/common.js"></script>
+</body>
+</html>

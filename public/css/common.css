@@ -1,0 +1,221 @@
+* {
+	border: none;
+	font-family: "微软雅黑";
+	color: #333;
+}
+html,body{
+	width: 100%;
+	height: 100%;
+	background: #999999;
+}
+ul,li{
+	list-style: none;
+}
+a,a:link,a:active,a:hover,a:visited { 
+	text-decoration: none;
+	color: #333;
+} 
+
+/*	box-shadow:-10px 0 10px red, 左边阴影  
+    10px 0 10px yellow, 右边阴影  
+    0 -10px 10px blue, 顶部阴影  
+    0 10px 10px green; 底边阴影*/
+.fr{
+	float: right;
+}
+.fl{
+	float: left;
+}
+.cb{
+	clear: both;
+}
+.width10{
+	width: 10px;
+}
+.width30{
+	width: 30px;
+}
+.width50{
+	width: 50px;
+}
+.width80{
+	width: 80px;
+}
+.width100{
+	width: 100px;
+}
+.width150{
+	width: 150px;
+}
+.width200{
+	width: 200px;
+}
+.content{
+	width: 100%;
+	height: 100%;
+	min-width: 960px;
+	min-height: 680px;
+	background: rgb(254, 254, 254);
+}
+/*左边导航目录等*/
+.content-left{
+	width: 25%;
+	height: 100%;
+	min-width: 240px;
+	max-width: 300px;
+	overflow-x: auto; 
+	background: rgb(250, 250, 250);
+/*	-webkit-box-shadow:8px 0 8px rgb(150, 150, 150);  
+	-moz-box-shadow:8px 0 8px rgb(150, 150, 150);  */
+	/*box-shadow:8px 0px 8px #222;  */
+	box-shadow: 5px 0px 10px rgba(150, 150, 150, .8); 
+
+}
+.nav-title{
+	width: 100%;
+	height: 50px;
+	overflow: auto; 
+	font-size: 32px;
+	font-weight: 550;
+	text-align: center;
+	line-height: 50px;
+	margin-bottom: 20px;
+/*	-webkit-box-shadow:0 8px 8px rgb(220, 220, 220);  
+	-moz-box-shadow:0 8px 8px rgb(220, 220, 220);  
+	box-shadow:0 8px 8px rgb(220, 220, 220); */
+	box-shadow: 1px 5px 10px rgba(150, 150, 150, .8); 
+}
+.nav-title a{
+	margin-right: 12px;
+}
+.nav-catalog{
+	margin: 5px 10px;
+}
+.nav-catalog ul{
+	padding-left: 20px;
+}
+.nav-catalog>ul{
+	padding-left: 10px;
+}
+.nav-catalog ul li{
+	font-size: 24px;
+}
+.nav-catalog ul li ul li{
+	font-size: 18px;
+}
+.nav-catalog ul li ul li ul li{
+	font-size: 16px;
+}
+.content-right{
+	width: 73%;
+	height: 100%;	
+	min-width: 700.8px;
+	overflow: auto; 
+	background: rgb(254, 254, 254);
+	padding-right: 2%;
+	margin-left: 2%;
+}
+.api-title{
+	width: 100%;
+	height: 60px;
+	text-align: center;
+	line-height: 60px;
+	font-size: 40px;
+}
+.api-title>div{
+	margin-left: 10%;
+	width: 80%;
+    overflow: hidden;  /*溢出隐藏*/
+    text-overflow: ellipsis; /*以省略号...显示*/
+    white-space: nowrap;  /*强制不换行*/
+}
+.api-title>a{
+	margin-right: 22px;
+}
+.api-content{
+	width: 100%;
+	margin-top: 50px;
+}
+.api-content p{
+	font-size: 16px;
+	margin: 5px 8px;
+}
+.radio label{
+	margin-right: 15px;
+}
+p>a{
+	margin: 0px 5px;
+}
+.api-code{
+    width: 100%;  /*必须设置宽度*/
+    overflow: hidden;  /*溢出隐藏*/
+    text-overflow: ellipsis; /*以省略号...显示*/
+    white-space: nowrap;  /*强制不换行*/
+}
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/  
+::-webkit-scrollbar  
+{  
+    width: 8px;
+    height: 8px;  
+    background-color: #F5F5F5;  
+}  
+  
+/*定义滚动条轨道 内阴影+圆角*/  
+::-webkit-scrollbar-track  
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);  
+    border-radius: 10px;  
+    background-color: #F5F5F5;  
+}  
+  
+/*定义滑块 内阴影+圆角*/  
+::-webkit-scrollbar-thumb  
+{  
+    border-radius: 10px;  
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);  
+    background-color: #555;  
+}
+
+/* bootstrap */
+
+
+.bs-callout {
+    padding: 10px;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+}
+.bs-callout-danger {
+    border-left-color: #ce4844;
+}
+.bs-callout-info {
+    border-left-color: #1b809e;
+}
+.bs-callout-success {
+    border-left-color: #5cb85c;
+}
+/*.bs-callout-warning {
+    border-left-color: #aa6708;
+}*/
+.bs-callout-warning {
+    border-left-color: #ec971f;
+}
+.bs-example {
+    margin-right: 0;
+    margin-left: 0;
+    background-color: #fff;
+    border-color: #ddd;
+    border-width: 1px;
+    border-radius: 4px 4px 0 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.divider {
+    height: 2px;
+    margin: 9px 1px;
+    overflow: hidden;
+    background-color: #1b809e;
+    border-bottom: 1px solid #fff;
+}
