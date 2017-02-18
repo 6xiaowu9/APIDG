@@ -3,7 +3,10 @@
 	<ul>
 		<li ng-repeat="item in catalogs">
 			<a href="?name={{item.name}}" title="{{item.name}}" ng-bind="item.name" ></a>
-			<div ng-if="item.data" ng-include="'catalog'" ng-init="catalogs = item.data" ></div>
+			<a class="icon-a fr glyphicon glyphicon-edit" href="./addCatalog.html?name={{item.name}}" title="修改目录" ></a>
+			<a class="icon-a fr glyphicon glyphicon-trash" href="#" ng-click="deleteCatalog(item.name)" title="删除目录" ></a>
+			<div ng-if="item.data" ng-include="'catalog'" ng-init="catalogs = item.data" >	
+			</div>
 		</li>
 	<ul>
 </script>

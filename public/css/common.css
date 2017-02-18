@@ -106,6 +106,15 @@ a,a:link,a:active,a:hover,a:visited {
 .nav-catalog ul li ul li ul li{
 	font-size: 16px;
 }
+.icon-a{
+	width: 20px;
+	height: 20px;
+	font-size: 12px;
+	position: relative;
+	/*margin: 5px;*/
+	line-height: 20px;
+}
+
 .content-right{
 	width: 73%;
 	height: 100%;	

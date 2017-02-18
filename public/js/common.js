@@ -1,3 +1,26 @@
+// 删除目录
+function deleteCatalog( data, name ){
+	for(var key in data){
+		if( data[key].name == name){
+			if(data[key].hasOwnProperty("data")){
+				alert("存在子目录无法删除");
+				return false;
+			}
+			data.pop( key );
+			return data;
+		}
+		if( data[key].hasOwnProperty("data") ){
+			var json = deleteCatalog( data[key].data, name );
+			if( !json ) {
+				return false;
+			}else{
+				data[key].data.length == 0 && delete data[key].data;
+			}
+		}
+	}
+	return data;
+}
+
 // 格式化api JSON数据为可用类型
 function formatApiJsonString( data , prevData){
 	if( isObject( data ) ){
@@ -165,9 +188,16 @@ function inJsonArray( jsonArray, key, value, data ){
 	if( isArray( jsonArray ) ){
 		for( var index in jsonArray ){
 			if( jsonArray[index].hasOwnProperty(key) ){
+
 				if( jsonArray[index][key] == value && key != "httpUrl"){
+					if( key == "name" && data ){
+						jsonArray[index]["name"] = data['name'];
+						jsonArray[index]["title"] = data['title'];
+						return jsonArray;
+					}
 					return jsonArray[index];
 				}else 
+				//api 中修改接口文档
 				if( key == "httpUrl" ){
 					var boolean = jsonArray[index][key].substring(0, jsonArray[index][key].indexOf("?")) == value.substring(0, value.indexOf("?"));
 					// console.log(boolean,data);

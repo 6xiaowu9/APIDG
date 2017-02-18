@@ -4,7 +4,26 @@ $data = file_get_contents("php://input");
 $data = json_decode($data);
 switch ( $data->type ) {
 	case "catalog":
-		echo "catalog";
+	    $fp = fopen("./json/catalog.json", "w");//文件被清空后再写入 
+		if($fp){ 
+			$flag=fwrite($fp, $data->json); 
+			if(!$flag) { 
+				echo "写入文件失败<br>"; 
+				break; 
+			}
+			if( $data->newName ){
+				rename("./json/api/".md5($data->name).".json", "./json/api/".md5($data->newName).".json");
+			}else{
+	    		fopen("./json/api/".md5($data->name).".json", "w");//文件被清空后再写入 
+			}
+		}else{ 
+			echo "打开文件失败"; 
+		}
+		fclose($fp);
+		echo "1";
+		break;
+	
+	case "deleteCatalog":
 	    $fp = fopen("./json/catalog.json", "w");//文件被清空后再写入 
 		if($fp){ 
 			$flag=fwrite($fp, $data->json); 
@@ -12,12 +31,12 @@ switch ( $data->type ) {
 				echo "写入文件失败<br>"; 
 				break; 
 			} 
-	    	fopen("./json/api/".md5($data->name).".json", "w");//文件被清空后再写入 
+	    	@unlink("./json/api/".md5($data->name).".json");//文件被清空后再写入 
 		}else{ 
 			echo "打开文件失败"; 
 		}
 		fclose($fp);
-		echo "写入成功！";
+		echo "1";
 		break;
 	
 	case "api":
@@ -33,7 +52,7 @@ switch ( $data->type ) {
 			echo "打开文件失败"; 
 		}
 		fclose($fp);
-		echo "写入成功！";
+		echo "1";
 		break;
 	
 	default:
