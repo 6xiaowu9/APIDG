@@ -13,7 +13,7 @@ var app = angular.module("API8192",[]);
 	    }
 	});
 	app.controller("apiContent",function( $scope, $http, $location ){
-		// console.log($http);
+
   		$http.get("./json/catalog.json?name="+random).success(function(response) {
 		    $scope.catalogs = response;
 			var url = $location.absUrl();
@@ -48,10 +48,13 @@ var app = angular.module("API8192",[]);
 		  		for (var key in $scope.apis ) {
 			    	$scope.apis[key].responseString = formatJson( $scope.apis[key].responseString );
 			    }
-		  		$http.post("./save.php",{json:formatJson( response ), type:"api", name:$scope.apiTitle.name}).success(function(response) {
-					if(response){
+			    var token = prompt("输入token：");
+		  		$http.post("./save.php",{json:formatJson( response ), token:token, type:"api", name:$scope.apiTitle.name}).success(function(response) {
+					if(response == "1"){
 						alert("操作成功！");
 						window.location = "./index.html";
+					}else{
+						alert(response);
 					}
 				}).error(function(data){
 					alert("保存失败！");
@@ -69,10 +72,13 @@ var app = angular.module("API8192",[]);
 		  			return false;
 		  		}
 		  		$scope.catalogs = catalogs;
-		  		$http.post("./save.php",{json:formatJson( catalogs ), type:"deleteCatalog", name:name}).success(function(response) {
-					if(response){
+			    var token = prompt("输入token：");
+		  		$http.post("./save.php",{json:formatJson( catalogs ), token:token, type:"deleteCatalog", name:name}).success(function(response) {
+					if(response == "1"){
 						alert("操作成功！");
 						window.location = "./index.html";
+					}else{
+						alert(response);
 					}
 				}).error(function(data){
 					alert("保存失败！");
@@ -108,6 +114,7 @@ var app = angular.module("API8192",[]);
 	  		var newCatalog = new Object();
 	  		newCatalog.name = $scope.name;
 	  		newCatalog.title = $scope.title;
+		    var token = prompt("输入token：");
 	  		$http.get("./json/catalog.json?name="+random).success(function(response) {
 				var catalogs = response;
 				if( !isArray( catalogs ) ){
@@ -119,16 +126,16 @@ var app = angular.module("API8192",[]);
 		  		}
 		  		if( !$scope.new ){
 					var json = inJsonArray( catalogs, "name", params.name, newCatalog );
-					$http.post("./save.php",{json:formatJson(json), type:'catalog', name:params.name, newName:newCatalog.name}).success(function(response){
-						if(response){
+					$http.post("./save.php",{json:formatJson(json), token:token, type:'catalog', name:params.name, newName:newCatalog.name}).success(function(response){
+						if(response == "1"){
 							alert("操作成功！");
 							window.location = "./index.html";
+						}else{
+							alert(response);
 						}
-
 					});
 					return false;
 		  		}
-		  		return false;
 	  			var position = $(".ng-scope select:last option:selected").text();
 	  			if( position.indexOf(">") < 0 ){
 	  				position = $(".ng-scope select:eq(-2) option:selected").text();
@@ -140,10 +147,12 @@ var app = angular.module("API8192",[]);
 	  			}else{
 					catalogs = formatCatalog( catalogs, newCatalog, position.substring(0, position.indexOf(">")-1));
 	  			}
-  				$http.post("./save.php",{json:formatJson(catalogs), type:'catalog', name:newCatalog.name}).success(function(response){
-					if(response){
+  				$http.post("./save.php",{json:formatJson(catalogs), token:token, type:'catalog', name:newCatalog.name}).success(function(response){
+					if(response == "1"){
 						alert("操作成功！");
 						window.location = "./index.html";
+					}else{
+						alert(response);
 					}
 
 				})
@@ -251,10 +260,13 @@ var app = angular.module("API8192",[]);
   			}else{
 	  			json.push(data);
   			}
-			$http.post("./save.php",{json:formatJson( json ), type:"api", name:$scope.apiTtile.name}).success(function(response) {
-				if(response){
+		    var token = prompt("输入token：");
+			$http.post("./save.php",{json:formatJson( json ), token:token, type:"api", name:$scope.apiTtile.name}).success(function(response) {
+				if(response == "1"){
 					alert("操作成功！");
 					window.location = "./index.html?name="+$scope.apiTtile.name;
+				}else{
+					alert(response);
 				}
 			}).error(function(data){
 				alert("保存失败！");
